@@ -2,31 +2,32 @@ const conexion = require('../config/connection')
 
 const clientSchema = new conexion.Schema({
     nombre: {
-        type: String,   
+        type: String,
         required: [true, 'el nombre completo debe ser ingresado'], trim: true,
-        maxLength: [150, 'el nombre completo ingresado es muy extenso'], 
+        maxLength: [150, 'el nombre completo ingresado es muy extenso'],
         minLength: [8, 'el nombre completo ingresado es muy corto']
     },
-    telefono:{
+    telefono: {
         type: String,
         required: true, trim: true,
-        minLength: [9, 'el telefono ingresado es muy corto'], 
+        minLength: [9, 'el telefono ingresado es muy corto'],
         maxLength: [14, 'el telefono ingresado es muy extenso'],
     },
     direccion: {
-        type: String, 
-        required: true, 
+        type: String,
+        required: true,
         trim: true,
-        minLength: [9, 'la dirección ingresada es muy corto'],      
+        minLength: [9, 'la dirección ingresada es muy corto'],
     },
     habilitado: {
-        type: Boolean, 
+        type: Boolean,
         default: true
     },
-    usuario:{
-        type: conexion.SchemaTypes.ObjectId
+    usuario: {
+        type: conexion.SchemaTypes.ObjectId,
+        ref: 'user',
     }
-});
+}, { versionKey: false });
 
 const clientModel = conexion.model('customers', clientSchema);
 module.exports = clientModel;
