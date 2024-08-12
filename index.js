@@ -63,7 +63,7 @@ app.delete('/delete/:id', async (req,res) => {
 
 
 
-/* The new information is the model of products*/
+/*1*/
 
 
 app.get('/products', async (req,res) => {
@@ -119,7 +119,7 @@ app.delete('/delete/:id', async (req,res) => {
     res.status(200).json({"mensaje":"removed successfully"})   
 })
 
-/* The new information is model of customers*/
+/*2*/
 
 app.get('/customers', async (req,res) => {
     const query = await customersModels.find({});
@@ -170,7 +170,7 @@ app.delete('/delete/:id', async (req,res) => {
 })
 
 
-/*The information is about model of orders */
+/*3*/
 
 app.get('/orders', async (req,res) => {
     const query = await ordersModels.find({});
